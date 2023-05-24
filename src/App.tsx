@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./navigation/router";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import {  Center, Loader, LoadingOverlay } from "@mantine/core";
+import { fetchPrepareXHR } from "./store/reducers/settings/actionCreator";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+type Props = {};
+
+const App = (props: Props) => {
+
+  // Hooks
+  const dispatch = useAppDispatch()
+
+  // Variables
+  const { fetchPrepareStatus } = useAppSelector(state => state.settingsReducer)
+
+  // Methods
+  useEffect(() => {
+    fetchPrepareXHR({}, dispatch)
+  }, [])
+
+  if(fetchPrepareStatus === "loading") {
+    return (
+      <Center w="100vw" h="100vh">
+        <Loader />
+      </Center>
+    )
+  }
+  
+  return <RouterProvider router={router} />
+};
 
 export default App;
