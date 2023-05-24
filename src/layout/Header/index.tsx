@@ -180,7 +180,7 @@ export function Header({}: HeaderTabsProps) {
             >
               <Group spacing={7}>
                 <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
-                  <Anchor href="https://mantine.dev/" target="_blank">
+                  <Anchor href="https://github.com/Giollesco/sbp" target="_blank">
                     Link na github
                   </Anchor>
                 </Text>
