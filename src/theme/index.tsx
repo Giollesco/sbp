@@ -4,6 +4,6 @@ export const theme: Partial<MantineTheme> = {
     fontFamily: 'Poppins',
     loader: 'bars',
     defaultRadius: 'md',
-    // primaryColor: 'yellow',
-    // colorScheme: 'dark'
+    primaryColor: 'yellow',
+    colorScheme: 'dark'
 }

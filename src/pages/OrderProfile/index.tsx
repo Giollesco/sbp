@@ -64,19 +64,14 @@ const OrderProfile = (props: Props) => {
         setOrder(orders.find((order) => Number(order.id) === Number(id))!);
       }
     }
-  }, []);
+  }, [stateOrder]);
 
-  useEffect(() => {
-    if(stateOrder.id !== -1){
-      setOrder(stateOrder);
-    }
-  }, [stateOrder])
 
   function deleteOrder() {
     const token = localStorage.getItem("token");
     api()
       .delete<string, string>(`/accounts/orders/${id}/`, {
-        params: { db: database },
+        data: { db: database },
         headers: { Authorization: "Bearer " + token },
       })
       .then((res: any) => {

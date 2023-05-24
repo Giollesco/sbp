@@ -81,6 +81,7 @@ export const updateOrderXHR = async (
   } catch (error: any) {
     if (data.errorCallback) {
       data.errorCallback(error);
+      console.log("🚀 ~ file: actionCreator.ts:84 ~ error:", error)
     }
 
     dispatch(ordersSlice.actions.updateOrderFail(error.message));

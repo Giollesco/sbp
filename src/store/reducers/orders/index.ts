@@ -71,7 +71,7 @@ export const ordersSlice = createSlice({
         state.order = action.payload;
         let orders: IOrder[] = [...state.orders];
         const index = orders.findIndex(item => {
-          if(item.hasOwnProperty('_id')) return item._id === action.payload.id.toString();
+          if(item.hasOwnProperty('_id')) return item._id === action.payload._id!.toString();
           else return Number(item.id) === Number(action.payload.id);
         });
         orders[index] = action.payload;
