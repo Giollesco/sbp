@@ -19,7 +19,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DBMenu } from "../components/DBMenu";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Database, IDatabase } from "../../models";
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -87,6 +87,7 @@ interface HeaderTabsProps {}
 export function Header({}: HeaderTabsProps) {
 
   // Hooks
+  const navigate = useNavigate()
   const dispatch = useAppDispatch();
   const location = useLocation();
 
@@ -97,6 +98,12 @@ export function Header({}: HeaderTabsProps) {
   );
   const { classes, theme, cx } = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+
+  // Routes
+  const routes = [
+    { link: "/orders", label: "Radni nalozi" },
+    { link: "/assets", label: "Imovina" } 
+  ]
 
   // Methods
   useEffect(() => {
@@ -109,9 +116,9 @@ export function Header({}: HeaderTabsProps) {
   }
 
   // Tabs
-  const items = ["Radni nalozi"].map((tab) => (
-    <Tabs.Tab value={tab} key={tab}>
-      {tab}
+  const items = routes.map((tab) => (
+    <Tabs.Tab value={tab.link} key={tab.link} onClick={() => navigate(tab.link)}>
+      {tab.label}
     </Tabs.Tab>
   ));
 
@@ -210,7 +217,8 @@ export function Header({}: HeaderTabsProps) {
                 transition={{ delay: isOnOrderProfile ? 0 : 0.3 }}
               >
                 <Tabs
-                  defaultValue="Radni nalozi"
+                  defaultValue="/orders"
+                  value={location.pathname}
                   variant="default"
                   classNames={{
                     tabsList: classes.tabsList,

@@ -3,11 +3,13 @@ import { configureStore } from "@reduxjs/toolkit";
 // Reducers
 import ordersReducer from "./reducers/orders";
 import settingsReducer from "./reducers/settings";
+import assetsReducer from "./reducers/assets"
 
 export let store = configureStore({
   reducer: {
     ordersReducer,
-    settingsReducer
+    settingsReducer,
+    assetsReducer
   },
 });
 

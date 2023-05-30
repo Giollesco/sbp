@@ -4,6 +4,7 @@ import { Loader, Space, Stack, Text, Title } from "@mantine/core";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchOrdersXHR } from "../../store/reducers/orders/actionCreator";
 import { IOrder } from "../../models";
+import AnimatedPageWrapper from "../../components/AnimatedPageWrapper";
 
 type Props = {};
 
@@ -24,7 +25,7 @@ const OrdersList = (props: Props) => {
   }, [database]);
 
   return (
-    <div>
+    <AnimatedPageWrapper _key="orders-list">
       {/* Header */}
       <Stack mb="xl">
         <Title>Popis radnih naloga</Title>
@@ -40,7 +41,7 @@ const OrdersList = (props: Props) => {
 
       {/* Table */}
       {fetchOrdersStatus === "loading" ? <Loader /> : <OrdersTable data={orders} />}
-    </div>
+    </AnimatedPageWrapper>
   );
 };
 

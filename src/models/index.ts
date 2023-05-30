@@ -45,3 +45,10 @@ export type IPrepare = {
     maintenance_types: Array<IBaseModel & { color: string }>,
     assets: Array<IBaseModel>
 }
+
+export interface IAsset {
+    name: string,
+    avatar: string | null,
+    id?: number | string,
+    _id?: string,
+}

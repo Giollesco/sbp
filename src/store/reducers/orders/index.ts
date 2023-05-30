@@ -61,7 +61,7 @@ export const ordersSlice = createSlice({
       state.createOrderStatus = action.payload;
     },
 
-    // Creating order
+    // Updating order
     updateOrder(state) {
       state.updateOrderStatus = "loading";
     },

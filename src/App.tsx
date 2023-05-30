@@ -13,11 +13,13 @@ const App = (props: Props) => {
   const dispatch = useAppDispatch()
 
   // Variables
-  const { fetchPrepareStatus } = useAppSelector(state => state.settingsReducer)
+  const { fetchPrepareStatus, database } = useAppSelector(state => state.settingsReducer)
 
   // Methods
   useEffect(() => {
-    fetchPrepareXHR({}, dispatch)
+    fetchPrepareXHR({
+      queryParams: { db: database }
+    }, dispatch)
   }, [])
 
   if(fetchPrepareStatus === "loading") {

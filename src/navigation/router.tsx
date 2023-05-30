@@ -5,6 +5,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import OrdersList from "../pages/OrdersList";
 import OrderProfile from "../pages/OrderProfile";
 import Layout from "../layout";
+import Assets from "../pages/Assets";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         path: "/orders/:id",
         element: <OrderProfile />,
       },
+      {
+        path: "/assets",
+        element: <Assets />
+      }
     ]
   },
 ]);

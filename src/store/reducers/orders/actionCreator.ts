@@ -59,7 +59,7 @@ export const createOrderXHR = async (
   }
 };
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: UPDATEORDER
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: UPDATE ORDER
 
 export const updateOrderXHR = async (
   data: Partial<IDataToApi<IOrderPayload, IOrder>>,
@@ -81,7 +81,6 @@ export const updateOrderXHR = async (
   } catch (error: any) {
     if (data.errorCallback) {
       data.errorCallback(error);
-      console.log("🚀 ~ file: actionCreator.ts:84 ~ error:", error)
     }
 
     dispatch(ordersSlice.actions.updateOrderFail(error.message));
