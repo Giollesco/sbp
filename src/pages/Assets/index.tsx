@@ -43,6 +43,11 @@ const Assets = (props: Props) => {
     open();
   }
 
+  function openModal(){
+    setSelectedAsset({ name: null, avatar: null, id: null, _id: null  })
+    open()
+  }
+
   if (fetchAssetsStatus === "loading") {
     return <div>Loading...</div>;
   }
@@ -62,7 +67,7 @@ const Assets = (props: Props) => {
           </Text>
         </Stack>
         <Flex gap="md">
-          <Button onClick={open}>Dodaj</Button>
+          <Button onClick={openModal}>Dodaj</Button>
         </Flex>
       </Flex>
 

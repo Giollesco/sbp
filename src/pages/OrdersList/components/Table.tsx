@@ -18,6 +18,7 @@ import {
   Modal,
   Title,
   Space,
+  useMantineTheme,
 } from "@mantine/core";
 import { keys } from "@mantine/utils";
 import { IconSelector, IconChevronDown, IconChevronUp, IconSearch } from "@tabler/icons-react";
@@ -81,6 +82,9 @@ function Th({ children, reversed, sorted, onSort }: ThProps) {
 
 export function OrdersTable({ data }: TableSortProps) {
 
+  // Hooks
+  const theme = useMantineTheme()
+
   // Variables
   const [opened, { open, close }] = useDisclosure(false);
   const [search, setSearch] = useState("");
@@ -125,7 +129,10 @@ export function OrdersTable({ data }: TableSortProps) {
           </td>
           <td>{row.executors.map((item) => item.name).join(", ")}</td>
           <td>
-            <Badge bg="gray.4" color="dark.7" variant="light" size="lg" fw="bold" style={{ textTransform: "none" }}>
+            <Badge 
+              bg={theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}
+              color={theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[8]}
+              variant="light" size="lg" fw="bold" style={{ textTransform: "none" }}>
               {row.asset.name}
             </Badge>
           </td>

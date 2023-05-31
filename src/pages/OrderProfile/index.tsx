@@ -16,6 +16,7 @@ import {
   Text,
   Title,
   UnstyledButton,
+  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import OrderForm from "../../components/forms/OrderForm";
@@ -33,6 +34,7 @@ const OrderProfile = (props: Props) => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const theme = useMantineTheme()
 
   // Variables
   const stateOrder = useAppSelector((state) => state.ordersReducer.order);
@@ -117,7 +119,10 @@ const OrderProfile = (props: Props) => {
           {order.maintenance_type.name}
         </Badge>
 
-        <Badge bg="gray.4" color="dark.7" variant="light" size="lg" fw="bold" style={{ textTransform: "none" }}>
+        <Badge 
+          bg={theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]}
+          color={theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[8]} 
+          variant="light" size="lg" fw="bold" style={{ textTransform: "none" }}>
           {order.asset.name}
         </Badge>
       </Flex>

@@ -70,6 +70,11 @@ const Form = ({ asset, close }: Props) => {
 
   useEffect(() => {
     setName(asset.name || null)
+    setImage((asset.avatar as unknown as FileWithPath) || null)
+    return () => {
+      setImage(null)
+      setName(null)
+    }
   }, [])
 
   return (
