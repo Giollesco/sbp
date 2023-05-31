@@ -27,7 +27,14 @@ const Form = ({ asset, close }: Props) => {
   // Methods
   function onFinish() {
 
-    let avatar = image ? URL.createObjectURL(image) : ""
+    let _image: FileWithPath | string | null  = image;
+    let avatar: FileWithPath | string | null = _image
+    if(typeof _image === "string"){
+      avatar = _image
+    }
+    else{
+      avatar = _image ?  URL.createObjectURL(_image) : ""
+    }
 
     // Creating form data
     let formData = new FormData();
