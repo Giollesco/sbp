@@ -42,7 +42,10 @@ export const createAssetXHR = async (
     let response = await api().post<IAsset>(
       `accounts/assets/`,
       data.body,
-      { headers: { Authorization: "Bearer " + token } }
+      { headers: { 
+        Authorization: "Bearer " + token ,
+        'Content-Type': 'multipart/form-data'
+      } }
     );
     if (data.successCallback) {
       data.successCallback(response.data);
@@ -70,7 +73,10 @@ export const updateAssetXHR = async (
     let response = await api().put<IAsset>(
       `accounts/assets/${data.id}/`,
       data.body,
-      { headers: { Authorization: "Bearer " + token } }
+      { headers: { 
+        Authorization: "Bearer " + token ,
+        'Content-Type': 'multipart/form-data'
+      } }
     );
     if (data.successCallback) {
       data.successCallback(response.data);

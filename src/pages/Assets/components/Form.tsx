@@ -38,7 +38,7 @@ const Form = ({ asset, close }: Props) => {
 
     // Creating form data
     let formData = new FormData();
-    formData.append("avatar", avatar)
+    formData.append("avatar", image!)
     formData.append("name", name || "")
     formData.append("db", database)
     if (asset.name) {
@@ -101,8 +101,7 @@ const Form = ({ asset, close }: Props) => {
               radius="md"
               style={{ objectFit: "cover", borderRadius: 8 }}
               src={asset.avatar ? 
-                `${process.env.REACT_APP_HOST_BACKEND}/${asset.avatar}` 
-                // asset.avatar
+                `${process.env.REACT_APP_HOST_BACKEND}${asset.avatar}` 
                 :
                 URL.createObjectURL(image)}
             />

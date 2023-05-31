@@ -78,7 +78,7 @@ const Card = ({ asset, onClick }: Props) => {
             width="100%"
             height={200}
             src={
-              asset.avatar || "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
+              `${process.env.REACT_APP_HOST_BACKEND}${asset.avatar}` || "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
             }
           />
         </Group>
